@@ -215,17 +215,11 @@
             text-align: center;
         }
 
-        .profile-img-placeholder {
+        .profile-img {
             width: 300px;
             height: 300px;
-            background: linear-gradient(45deg, var(--accent), var(--highlight));
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--light);
-            font-size: 1.2rem;
-            margin: 0 auto;
+            object-fit: cover;
             border: 5px solid var(--accent);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
@@ -304,6 +298,186 @@
             position: absolute;
             left: 0;
             color: var(--highlight);
+        }
+
+        /* Sertifikasi Section */
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .certificate-item {
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent);
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.2);
+        }
+
+        .certificate-img {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .certificate-item:hover .certificate-img img {
+            transform: scale(1.1);
+        }
+
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 52, 96, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .certificate-item:hover .certificate-overlay {
+            opacity: 1;
+        }
+
+        .view-certificate {
+            color: white;
+            font-size: 2rem;
+            background: var(--highlight);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .view-certificate:hover {
+            background: #d6335c;
+            transform: scale(1.1);
+        }
+
+        .certificate-item h3 {
+            color: var(--light);
+            padding: 20px 20px 10px;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .certificate-item p {
+            color: var(--gray);
+            padding: 0 20px 20px;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Projek Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-item {
+            background: var(--secondary);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent);
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.2);
+        }
+
+        .project-img {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 52, 96, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .view-project {
+            color: white;
+            font-size: 2rem;
+            background: var(--highlight);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .view-project:hover {
+            background: #d6335c;
+            transform: scale(1.1);
+        }
+
+        .project-item h3 {
+            color: var(--light);
+            padding: 20px 20px 10px;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .project-item p {
+            color: var(--gray);
+            padding: 0 20px 20px;
+            margin: 0;
+            font-size: 0.9rem;
         }
 
         footer {
@@ -403,6 +577,8 @@
                     <li><a href="#experience">WORK EXPERIENCE</a></li>
                     <li><a href="#education">EDUCATION</a></li>
                     <li><a href="#skills">TECHNICAL SKILLS</a></li>
+                    <li><a href="#sertifikasi">SERTIFIKASI</a></li>
+                    <li><a href="#projek">PROJEK</a></li>
                 </ul>
                 <div class="menu-toggle">
                     <span></span>
@@ -417,7 +593,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Muhammad Jamil <span>Alfaizs</span></h1>
-                <p>robotica/automation Engineer, SCAFFOLDER - fitter</p>
+                <p>Robotica/Automation Engineer, SCAFFOLDER - Fitter</p>
                 <a href="#about" class="btn">Tentang Saya</a>
             </div>
         </div>
@@ -440,9 +616,7 @@
                     <p>Perpaduan antara pengalaman lapangan dan pengetahuan teknis membuat saya terbiasa berpikir sistematis, efisien, serta berorientasi pada solusi nyata. Saya selalu tertarik untuk mempelajari hal baru dan menerapkan teknologi modern dalam setiap proyek yang saya kerjakan.</p>
                 </div>
                 <div class="about-image">
-                    <div class="profile-img-placeholder">
-                        <i class="fas fa-user" style="font-size: 4rem;"></i>
-                    </div>
+                    <img src="https://i.imgur.com/5YtbiOs.jpeg" class="profile-img" alt="Foto Muhammad Jamil Alfaizs">
                 </div>
             </div>
         </div>
@@ -472,7 +646,7 @@
                 <div class="edu-exp-card">
                     <h3>SCAFFOLDER</h3>
                     <p>PT McDermott</p>
-                    <p>IoT Engineer, Scaffolder certified, fitter </p>
+                    <p>IoT Engineer, Scaffolder Certified, Fitter</p>
                 </div>
             </div>
         </div>
@@ -515,6 +689,104 @@
                         <li>Disiplin terhadap waktu dan tanggung jawab profesional</li>
                         <li>Terbiasa bekerja kolaboratif dalam proyek lintas bidang</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sertifikasi Section -->
+    <section id="sertifikasi">
+        <div class="container">
+            <div class="section-title">
+                <h2>SERTIFIKASI</h2>
+            </div>
+            <div class="certificate-grid">
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://i.imgur.com/Buk3Ngs.jpeg" alt="Sertifikat K3 Scaffolding">
+                        <div class="certificate-overlay">
+                            <a href="https://i.imgur.com/Buk3Ngs.jpeg" class="view-certificate" target="_blank">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Sertifikat K3 Scaffolding</h3>
+                    <p>Keselamatan dan Kesehatan Kerja</p>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://i.imgur.com/HQYuiS2.jpeg" alt="Sertifikat Career Planning">
+                        <div class="certificate-overlay">
+                            <a href="https://i.imgur.com/HQYuiS2.jpeg" class="view-certificate" target="_blank">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Successful Career Planning</h3>
+                    <p>Industrial Engineering</p>
+                </div>
+                
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="https://i.imgur.com/4HO6C4x.jpeg" alt="Sertifikat Belajar Berbasis Proyek">
+                        <div class="certificate-overlay">
+                            <a href="https://i.imgur.com/4HO6C4x.jpeg" class="view-certificate" target="_blank">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Belajar Berbasis Proyek</h3>
+                    <p>Pendekatan Pembelajaran Modern</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projek & Dokumentasi Section -->
+    <section id="projek">
+        <div class="container">
+            <div class="section-title">
+                <h2>PROJEK & DOKUMENTASI</h2>
+            </div>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-img">
+                        <img src="https://i.imgur.com/OlQOna4.jpeg" alt="Dokumentasi Kerja Scaffolding">
+                        <div class="project-overlay">
+                            <a href="https://i.imgur.com/OlQOna4.jpeg" class="view-project" target="_blank">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Dokumentasi Scaffolding</h3>
+                    <p>PT McDermott - Pengalaman Lapangan</p>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-img">
+                        <img src="https://i.imgur.com/0xhJDH6.jpeg" alt="Robot Line Follower">
+                        <div class="project-overlay">
+                            <a href="https://i.imgur.com/0xhJDH6.jpeg" class="view-project" target="_blank">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Robot Line Follower</h3>
+                    <p>Project Based Learning - Robotika</p>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-img">
+                        <img src="https://i.imgur.com/cRWpaST.jpeg" alt="Robot Nexus Differential">
+                        <div class="project-overlay">
+                            <a href="https://i.imgur.com/cRWpaST.jpeg" class="view-project" target="_blank">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3>Robot Nexus Differential</h3>
+                    <p>Project Based Learning - Desain Mekanik</p>
                 </div>
             </div>
         </div>
