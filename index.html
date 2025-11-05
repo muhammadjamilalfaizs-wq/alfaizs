@@ -288,19 +288,17 @@
             position: relative;
         }
 
-        .profile-img {
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid transparent;
-            background: linear-gradient(135deg, var(--accent), var(--highlight)) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
-            transition: all 0.5s ease;
-        }
+       .profile-img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid transparent;
+    background: linear-gradient(135deg, var(--accent), var(--highlight));
+    padding: 3px;
+    box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+    transition: all 0.5s ease;
+}
 
         .profile-img:hover {
             transform: scale(1.05);
