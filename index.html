@@ -289,17 +289,16 @@
             position: relative;
         }
 
-       .profile-img {
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid transparent;
-    background: linear-gradient(135deg, var(--accent), var(--highlight));
-    padding: 3px;
-    box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
-    transition: all 0.5s ease;
-}
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.3);
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
 
         .profile-img:hover {
             transform: scale(1.05);
@@ -450,6 +449,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            cursor: pointer;
         }
 
         .certificate-item:hover .certificate-img img,
@@ -457,62 +457,53 @@
             transform: scale(1.1);
         }
 
-        .certificate-overlay, .project-overlay {
-            position: absolute;
-            top: 0;
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding-top: 50px;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background-color: rgba(0,0,0,0.9);
+            animation: fadeIn 0.3s;
         }
 
-        .certificate-item:hover .certificate-overlay,
-        .project-item:hover .project-overlay {
-            opacity: 1;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .view-certificate, .view-project {
-            color: white;
-            font-size: 2.5rem;
-            background: var(--accent);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            transform: scale(0.8);
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 10px;
+            animation: zoomIn 0.3s;
         }
 
-        .certificate-item:hover .view-certificate,
-        .project-item:hover .view-project {
-            transform: scale(1);
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
-        .view-certificate:hover, .view-project:hover {
-            background: var(--highlight);
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #00ff88;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #00ccff;
             transform: scale(1.1);
-        }
-
-        .certificate-item h3, .project-item h3 {
-            color: var(--light);
-            padding: 25px 25px 15px;
-            font-size: 1.3rem;
-            margin: 0;
-        }
-
-        .certificate-item p, .project-item p {
-            color: var(--gray);
-            padding: 0 25px 25px;
-            margin: 0;
-            font-size: 1rem;
         }
 
         /* Footer */
@@ -592,6 +583,9 @@
                 width: 280px;
                 height: 280px;
             }
+            .modal-content {
+                width: 90%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -628,12 +622,25 @@
             .section-title h2 {
                 font-size: 2.2rem;
             }
+            .modal-content {
+                width: 95%;
+            }
+            .close {
+                right: 20px;
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Particle Background -->
     <div id="particles-js"></div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
     <!-- Header & Navigation -->
     <header>
@@ -663,9 +670,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Muhammad Jamil <span>Alfaizs</span></h1>
-                <div class="typewriter"></p>Robotics Engineering at Batam Polytechnic</p>
-                    </p>Experienced Scaffolder (K3 teknisi perancah & TKBT certified)</p> 
-                </p>Experienced Fitter</div>
+                <div class="typewriter">Robotics Engineering at Batam Polytechnic | Experienced Scaffolder (K3 teknisi perancah & TKBT certified) | Experienced Fitter</div>
                 <a href="#about" class="btn">Explore My Journey</a>
             </div>
         </div>
@@ -688,7 +693,7 @@
                     <p>Kombinasi antara pengalaman lapangan dan studi teknis membantu saya berpikir praktis sekaligus inovatif dalam setiap tantangan.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://i.imgur.com/5YtbiOs.jpeg" class="profile-img" alt="Muhammad Jamil Alfaizs">
+                    <img src="images/foto-profil.jpg" class="profile-img" alt="Muhammad Jamil Alfaizs" loading="lazy">
                 </div>
             </div>
         </div>
@@ -778,12 +783,7 @@
             <div class="certificate-grid">
                 <div class="certificate-item">
                     <div class="certificate-img">
-                        <img src="https://i.imgur.com/Buk3Ngs.jpeg" alt="Sertifikat K3 Scaffolding">
-                        <div class="certificate-overlay">
-                            <a href="https://i.imgur.com/Buk3Ngs.jpeg" class="view-certificate" target="_blank">
-                                <i class="fas fa-expand"></i>
-                            </a>
-                        </div>
+                        <img src="images/sertifikat-k3.jpg" alt="Sertifikat K3 Scaffolding" loading="lazy">
                     </div>
                     <h3>Sertifikat K3 Scaffolding</h3>
                     <p>Keselamatan dan Kesehatan Kerja</p>
@@ -791,12 +791,7 @@
                 
                 <div class="certificate-item">
                     <div class="certificate-img">
-                        <img src="https://i.imgur.com/HQYuiS2.jpeg" alt="Sertifikat Career Planning">
-                        <div class="certificate-overlay">
-                            <a href="https://i.imgur.com/HQYuiS2.jpeg" class="view-certificate" target="_blank">
-                                <i class="fas fa-expand"></i>
-                            </a>
-                        </div>
+                        <img src="images/sertifikat-career.jpg" alt="Sertifikat Career Planning" loading="lazy">
                     </div>
                     <h3>Successful Career Planning</h3>
                     <p>Industrial Engineering</p>
@@ -804,12 +799,7 @@
                 
                 <div class="certificate-item">
                     <div class="certificate-img">
-                        <img src="https://i.imgur.com/4HO6C4x.jpeg" alt="Sertifikat Belajar Berbasis Proyek">
-                        <div class="certificate-overlay">
-                            <a href="https://i.imgur.com/4HO6C4x.jpeg" class="view-certificate" target="_blank">
-                                <i class="fas fa-expand"></i>
-                            </a>
-                        </div>
+                        <img src="images/sertifikat-proyek.jpg" alt="Sertifikat Belajar Berbasis Proyek" loading="lazy">
                     </div>
                     <h3>Belajar Berbasis Proyek</h3>
                     <p>Pendekatan Pembelajaran Modern</p>
@@ -827,12 +817,7 @@
             <div class="project-grid">
                 <div class="project-item">
                     <div class="project-img">
-                        <img src="https://i.imgur.com/OlQOna4.jpeg" alt="Dokumentasi Kerja Scaffolding">
-                        <div class="project-overlay">
-                            <a href="https://i.imgur.com/OlQOna4.jpeg" class="view-project" target="_blank">
-                                <i class="fas fa-expand"></i>
-                            </a>
-                        </div>
+                        <img src="images/scaffolding-doc.jpg" alt="Dokumentasi Kerja Scaffolding" loading="lazy">
                     </div>
                     <h3>Scaffolding Documentation</h3>
                     <p>PT McDermott - Field Experience</p>
@@ -840,12 +825,7 @@
                 
                 <div class="project-item">
                     <div class="project-img">
-                        <img src="https://i.imgur.com/0xhJDH6.jpeg" alt="Robot Line Follower">
-                        <div class="project-overlay">
-                            <a href="https://i.imgur.com/0xhJDH6.jpeg" class="view-project" target="_blank">
-                                <i class="fas fa-expand"></i>
-                            </a>
-                        </div>
+                        <img src="images/robot-line-follower.jpg" alt="Robot Line Follower" loading="lazy">
                     </div>
                     <h3>Robot Line Follower</h3>
                     <p>Project Based Learning - Robotics</p>
@@ -853,12 +833,7 @@
                 
                 <div class="project-item">
                     <div class="project-img">
-                        <img src="https://i.imgur.com/cRWpaST.jpeg" alt="Robot Nexus Differential">
-                        <div class="project-overlay">
-                            <a href="https://i.imgur.com/cRWpaST.jpeg" class="view-project" target="_blank">
-                                <i class="fas fa-expand"></i>
-                            </a>
-                        </div>
+                        <img src="images/robot-nexus.jpg" alt="Robot Nexus Differential" loading="lazy">
                     </div>
                     <h3>Robot Nexus Differential</h3>
                     <p>Project Based Learning - Mechanical Design</p>
@@ -919,6 +894,31 @@
                 }
             }
         });
+
+        // Modal Functionality
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const span = document.getElementsByClassName("close")[0];
+
+        // Add click event to all images
+        document.querySelectorAll('.profile-img, .certificate-img img, .project-img img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+            }
+        });
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
 
         // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
@@ -1014,7 +1014,7 @@
 
         // Typewriter effect
         const typewriterElement = document.querySelector('.typewriter');
-        const text = typewriterElement.textContent;
+        const text = "Robotics Engineering at Batam Polytechnic | Experienced Scaffolder (K3 teknisi perancah & TKBT certified) | Experienced Fitter";
         typewriterElement.textContent = '';
         let i = 0;
         
