@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="ocak3u2YNQJtVa196MRh4b3zxJ6-GXQYlZ-SM3g_Vpg" />
-    <title>Muhammad Jamil Alfaizs - Portofolio</title>
+    <title>Muhammad Jamil Alfaizs - Robotics Engineering with Industrial Field Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -149,7 +149,7 @@
         }
 
         .hero-content {
-            max-width: 600px;
+            max-width: 800px;
             z-index: 2;
             opacity: 0;
             transform: translateY(50px);
@@ -172,24 +172,12 @@
             background-clip: text;
         }
 
-        .typewriter {
+        .hero-subtitle {
             font-size: 1.5rem;
             margin-bottom: 30px;
             color: var(--accent);
-            border-right: 2px solid var(--accent);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent) }
+            line-height: 1.4;
+            font-weight: 500;
         }
 
         .btn {
@@ -344,20 +332,45 @@
             box-shadow: 0 20px 50px rgba(0, 255, 136, 0.2);
         }
 
+        .edu-exp-card.highlight {
+            border: 2px solid var(--highlight);
+            box-shadow: 0 0 30px rgba(0, 204, 255, 0.1);
+        }
+
+        .edu-exp-card.highlight:hover {
+            box-shadow: 0 20px 60px rgba(0, 204, 255, 0.3);
+        }
+
         .edu-exp-card h3 {
             color: var(--accent);
             margin-bottom: 20px;
             font-size: 1.8rem;
         }
 
+        .edu-exp-card.highlight h3 {
+            color: var(--highlight);
+        }
+
         .edu-exp-card p {
             color: var(--gray);
             font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .edu-exp-card strong {
             color: var(--light);
             font-weight: 600;
+        }
+
+        .edu-detail {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .edu-detail p {
+            color: var(--accent);
+            font-size: 1rem;
         }
 
         /* Skills Section */
@@ -460,6 +473,20 @@
         .certificate-item:hover .certificate-img img,
         .project-item:hover .project-img img {
             transform: scale(1.1);
+        }
+
+        .project-description {
+            padding: 20px;
+        }
+
+        .project-description h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .project-description p {
+            color: var(--gray);
+            line-height: 1.6;
         }
 
         /* Modal Styles */
@@ -567,6 +594,24 @@
             box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
         }
 
+        .contact-email {
+            margin: 20px 0;
+            color: var(--light);
+            font-size: 1.1rem;
+        }
+
+        .contact-email a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email a:hover {
+            color: var(--highlight);
+            text-decoration: underline;
+        }
+
         .copyright {
             color: var(--gray);
             font-size: 1rem;
@@ -577,6 +622,9 @@
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 3rem;
+            }
+            .hero-subtitle {
+                font-size: 1.3rem;
             }
             .about-content {
                 flex-direction: column;
@@ -621,8 +669,8 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            .typewriter {
-                font-size: 1.2rem;
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
             .section-title h2 {
                 font-size: 2.2rem;
@@ -633,6 +681,18 @@
             .close {
                 right: 20px;
                 font-size: 30px;
+            }
+            .social-links {
+                margin: 20px 0;
+            }
+            .social-links a {
+                margin: 0 10px;
+                width: 45px;
+                height: 45px;
+            }
+            .contact-email {
+                font-size: 1rem;
+                margin: 15px 0;
             }
         }
     </style>
@@ -670,18 +730,18 @@
         </div>
     </header>
 
-       <!-- Hero Section -->
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Muhammad Jamil <span>Alfaizs</span></h1>
                 <div class="hero-subtitle">
-    Robotics Engineering at Batam Polytechnic | Experienced Scaffolder (K3 teknisi perancah & TKBT certified) | Experienced Fitter/Erector Steel Construcion</div>
-                <a href="#about" class="btn">Explore My Journey</a>
+                    Robotics Engineering student with proven oil & gas and shipyard field experience, bridging technical systems with disciplined execution in high-risk industrial environments.
+                </div>
+                <a href="#about" class="btn">View Technical & Industrial Profile</a>
             </div>
         </div>
     </section>
-
 
     <!-- About Section -->
     <section id="about">
@@ -691,13 +751,11 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Halo, saya Muhammad Jamil Alfaizs — mahasiswa aktif Program D4 Teknik Robotika di Politeknik Negeri Batam. Saya memiliki ketertarikan yang kuat pada perkembangan teknologi, khususnya bidang pengembangan robotika, Internet of Things (IoT), pemrograman mikrokontroler, serta desain dan perancangan sistem robotika.</p>
+                    <p>Robotics engineering student with hands-on experience in technical system development and industrial field operations within safety-critical environments.</p>
                     
-                    <p>Dalam berbagai proyek, saya terbiasa menggabungkan aspek elektronika, mekanika, dan pemrograman untuk menciptakan solusi otomatisasi yang efisien dan fungsional.</p>
+                    <p>I integrate electronics, mechanics, and programming in robotics system development, with structured work patterns formed from direct experience in steel construction, shipyard, and oil & gas projects.</p>
                     
-                    <p>Selain fokus di bidang akademik, saya juga berpengalaman pada bidang industri, termasuk konstruksi baja, shipyard, dan oil & gas. khususnya pada bidang scaffolding dan fitting civil construcion.</p>
-                    
-                    <p>Kombinasi antara pengalaman lapangan dan studi teknis membantu saya berpikir praktis sekaligus inovatif dalam setiap tantangan.</p>
+                    <p>High-risk work environments have shaped safety discipline, procedural compliance, and work resilience that I apply in developing functional and reliable technical solutions.</p>
                 </div>
                 <div class="about-image">
                     <img src="images/foto-profil.jpg" class="profile-img" alt="Muhammad Jamil Alfaizs" loading="lazy">
@@ -716,8 +774,10 @@
                 <div class="edu-exp-card">
                     <h3>D4 Robotic Engineering</h3>
                     <p>Politeknik Negeri Batam</p>
-                    <p>Status: Ongoing</p>
-                    <p>Class of 2024</p>
+                    <div class="edu-detail">
+                        <p><strong>Focus:</strong> Robotics systems, control basics, and applied engineering projects</p>
+                        <p><strong>Status:</strong> Ongoing (Class of 2024)</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -733,31 +793,31 @@
                 <div class="edu-exp-card">
                     <h3>PT. CITRA SHIPYARD</h3>
                     <p><strong>SCAFFOLDER</strong></p>
-                    <p>Specialized in shipbuilding scaffolding systems</p>
+                    <p>Worked on shipbuilding projects, responsible for implementing scaffolding systems while ensuring structural stability, installation efficiency, and compliance with maritime safety regulations.</p>
                 </div>
                 
-                <div class="edu-exp-card">
+                <div class="edu-exp-card highlight">
                     <h3>PT. MCDERMOTT</h3>
                     <p><strong>SCAFFOLDER</strong></p>
-                    <p>Oil & gas industry scaffolding projects</p>
+                    <p>Worked on large-scale oil & gas projects, ensuring compliance with HSE standards and operational safety procedures while supporting critical scaffolding operations in active work zones.</p>
                 </div>
                 
                 <div class="edu-exp-card">
                     <h3>PT. ORINZA INTERNASIONAL</h3>
                     <p><strong>FITTER/ERECTOR STEEL CONSTRUCTION</strong></p>
-                    <p>Steel construction and structural erection</p>
+                    <p>Supported high-precision steel structure assembly and installation, ensuring compliance with technical specifications and maintaining safety standards in construction environments.</p>
                 </div>
 
                 <div class="edu-exp-card">
                     <h3>PT. ARUS JAYA</h3>
                     <p><strong>FITTER/ERECTOR STEEL CONSTRUCTION</strong></p>
-                    <p>Steel construction and structural erection</p>
+                    <p>Worked on steel construction projects, applying mechanical principles while focusing on quality control and safety implementation in field operations.</p>
                 </div>
                 
                 <div class="edu-exp-card">
                     <h3>PT. PAX OCEAN</h3>
                     <p><strong>SCAFFOLDER</strong></p>
-                    <p>Specialized in shipbuilding scaffolding systems</p>
+                    <p>Supported scaffolding system installation and supervision in shipyard environments, ensuring work safety, structural stability, and operational efficiency according to industrial standards.</p>
                 </div>
             </div>
         </div>
@@ -771,35 +831,38 @@
             </div>
             <div class="skills-container">
                 <div class="skill-category">
-                    <h3><i class="fas fa-hard-hat"></i> K3 & Industri</h3>
+                    <h3><i class="fas fa-robot"></i> Robotics & Technical Systems</h3>
                     <ul>
-                        <li>Ahli dalam penerapan K3 di lingkungan kerja berisiko tinggi</li>
-                        <li>Mampu melakukan instalasi, inspeksi, dan perawatan scaffolding</li>
-                        <li>Memahami standar keselamatan industri konstruksi sipil, shipyard, dan migas</li>
+                        <li>Microcontroller-based robotics system development</li>
+                        <li>Sensor-actuator integration for control systems</li>
+                        <li>Microcontroller programming (C/C++) for control logic and sensor integration</li>
                     </ul>
                 </div>
+                
                 <div class="skill-category">
-                    <h3><i class="fas fa-robot"></i> Robotika & IoT</h3>
+                    <h3><i class="fas fa-cube"></i> Design & Engineering</h3>
                     <ul>
-                        <li>Berpengalaman dalam perakitan sistem robotika berbasis mikrokontroler</li>
-                        <li>Integrasi sensor IoT (Arduino, NodeMCU)</li>
-                        <li>Menguasai pemrograman mikrokontroler (C/C++, Python, CSS, HTML)</li>
+                        <li>3D design using Onshape for mechanical modeling</li>
+                        <li>Understanding of industrial control systems and electronics</li>
+                        <li>Mechanical system design for robotics applications</li>
                     </ul>
                 </div>
+                
                 <div class="skill-category">
-                    <h3><i class="fas fa-cube"></i> Desain & Rekayasa</h3>
+                    <h3><i class="fas fa-hard-hat"></i> K3 & Industrial Safety</h3>
                     <ul>
-                        <li>Kemampuan desain 3D menggunakan Onshape</li>
-                        <li>Memahami prinsip dasar sistem kendali dan elektronika industri</li>
-                        <li>Pembuatan model mekanik untuk sistem robotika</li>
+                        <li>Experience applying K3 procedures in high-risk work environments</li>
+                        <li>Scaffolding system installation, inspection, and maintenance</li>
+                        <li>Understanding of safety standards across construction, shipyard, and oil & gas industries</li>
                     </ul>
                 </div>
+                
                 <div class="skill-category">
-                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <h3><i class="fas fa-users"></i> Professional Skills</h3>
                     <ul>
-                        <li>Kemampuan bekerja di lingkungan tekanan tinggi</li>
-                        <li>Disiplin terhadap waktu dan tanggung jawab profesional</li>
-                        <li>Terbiasa bekerja kolaboratif dalam proyek lintas bidang</li>
+                        <li>Worked effectively in high-pressure environments with strict time discipline</li>
+                        <li>Coordinated cross-functional teams with diverse backgrounds</li>
+                        <li>Implemented SOPs and maintained technical documentation in field operations</li>
                     </ul>
                 </div>
             </div>
@@ -817,16 +880,20 @@
                     <div class="certificate-img">
                         <img src="images/sertifikat-career.jpg" alt="Sertifikat Career Planning" loading="lazy">
                     </div>
-                    <h3>Successful Career Planning</h3>
-                    <p>Industrial Engineering</p>
+                    <div class="project-description">
+                        <h3>Successful Career Planning</h3>
+                        <p>Certificate in Professional Career Development</p>
+                    </div>
                 </div>
                 
                 <div class="certificate-item">
                     <div class="certificate-img">
                         <img src="images/sertifikat-proyek.jpg" alt="Sertifikat Belajar Berbasis Proyek" loading="lazy">
                     </div>
-                    <h3>Pembelajaran Berbasis Proyek</h3>
-                    <p>Pendekatan Pembelajaran Modern</p>
+                    <div class="project-description">
+                        <h3>Pembelajaran Berbasis Proyek</h3>
+                        <p>Project-Based Learning Methodology</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -843,39 +910,55 @@
                     <div class="project-img">
                         <img src="images/scaffolding-doc.jpg" alt="Dokumentasi Kerja Scaffolding" loading="lazy">
                     </div>
-                    <h3>Scaffolding Documentation</h3>
-                    <p>PT McDermott - Field Experience</p>
+                    <div class="project-description">
+                        <h3>Scaffolding Documentation</h3>
+                        <p>Field documentation project highlighting safety implementation, procedural discipline, and operational realities within active oil & gas industrial environments.</p>
+                    </div>
                 </div>
                 
                 <div class="project-item">
                     <div class="project-img">
                         <img src="images/robot-line-follower.jpg" alt="Robot Line Follower" loading="lazy">
                     </div>
-                    <h3>Robot Line Follower</h3>
-                    <p>Project Based Learning - Robotics</p>
+                    <div class="project-description">
+                        <h3>Robotics Control System Development</h3>
+                        <p>Designed and tested a microcontroller-based robotic system focusing on sensor–actuator integration and control logic validation.</p>
+                    </div>
                 </div>
                 
                 <div class="project-item">
                     <div class="project-img">
                         <img src="images/robot-nexus.jpg" alt="Robot Nexus Differential" loading="lazy">
                     </div>
-                    <h3>Robot Nexus Differential</h3>
-                    <p>Project Based Learning - Mechanical Design</p>
+                    <div class="project-description">
+                        <h3>Mechanical System Design</h3>
+                        <p>Designed and tested a mechanical system for Nexus robot with differential drive, applying mechanical design principles and motion analysis.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer dengan Email -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="logo">Alfaizs</div>
+                
                 <div class="social-links">
                     <a href="#"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/muhammad-jamil-alfaizs-224b0133b"><i class="fab fa-linkedin"></i></a>
                     <a href="https://www.instagram.com/muhammadalfaiss?igsh=bGJyNXl6eDh1OTJl"><i class="fab fa-instagram"></i></a>
                 </div>
+                
+                <!-- EMAIL DI SINI - TEPAT DI BAWAH SOCIAL LINKS -->
+                <div class="contact-email">
+                    Contact: 
+                    <a href="mailto:muhammadjamilalfaizs@gmail.com">
+                        muhammadjamilalfaizs@gmail.com
+                    </a>
+                </div>
+                
                 <p class="copyright">&copy; 2025 Muhammad Jamil Alfaizs. All rights reserved.</p>
             </div>
         </div>
@@ -1035,23 +1118,6 @@
                 gsap.to(header, { backgroundColor: "rgba(10, 10, 10, 0.8)", duration: 0.3 });
             }
         });
-
-        // Typewriter effect
-        const typewriterElement = document.querySelector('.typewriter');
-        const text = "Robotics Engineering at Batam Polytechnic | Experienced Scaffolder (K3 teknisi perancah & TKBT certified) | Experienced Fitter";
-        typewriterElement.textContent = '';
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                typewriterElement.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        
-        // Start typewriter after hero animation
-        setTimeout(typeWriter, 1500);
     </script>
 </body>
 </html>
