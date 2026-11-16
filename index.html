@@ -796,12 +796,6 @@
                     <p>Worked on shipbuilding projects, responsible for implementing scaffolding systems while ensuring structural stability, installation efficiency, and compliance with maritime safety regulations.</p>
                 </div>
                 
-                <div class="edu-exp-card highlight">
-                    <h3>PT. MCDERMOTT</h3>
-                    <p><strong>SCAFFOLDER</strong></p>
-                    <p>Worked on large-scale oil & gas projects, ensuring compliance with HSE standards and operational safety procedures while supporting critical scaffolding operations in active work zones.</p>
-                </div>
-                
                 <div class="edu-exp-card">
                     <h3>PT. ORINZA INTERNASIONAL</h3>
                     <p><strong>FITTER/ERECTOR STEEL CONSTRUCTION</strong></p>
@@ -818,6 +812,25 @@
                     <h3>PT. PAX OCEAN</h3>
                     <p><strong>SCAFFOLDER</strong></p>
                     <p>Supported scaffolding system installation and supervision in shipyard environments, ensuring work safety, structural stability, and operational efficiency according to industrial standards.</p>
+                </div>
+
+                <!-- Tambahan 3 PT setelah PT. Pax Ocean -->
+                <div class="edu-exp-card">
+                    <h3>PT. NIHON GLOBAL TECH</h3>
+                    <p><strong>ELECTRICAL WORKER</strong></p>
+                    <p>Executed industrial electrical installations, wiring, and system troubleshooting while strictly adhering to technical schematics and workplace safety regulations.</p>
+                </div>
+
+                <div class="edu-exp-card highlight">
+                    <h3>PT. TRAV ONE PERKASA</h3>
+                    <p><strong>CO-FOUNDER</strong></p>
+                    <p>Co-founded and managed business operations, strategic planning, and service delivery, driving company growth and cross-functional team coordination.</p>
+                </div>
+
+                <div class="edu-exp-card highlight">
+                    <h3>PT. MCDERMOTT INDONESIA</h3>
+                    <p><strong>SCAFFOLDER</strong></p>
+                    <p>Worked on large-scale oil & gas projects, ensuring compliance with HSE standards and operational safety procedures while supporting critical scaffolding operations in active work zones.</p>
                 </div>
             </div>
         </div>
@@ -908,6 +921,16 @@
             <div class="project-grid">
                 <div class="project-item">
                     <div class="project-img">
+                        <img src="images/scaffolding-calculator.jpg" alt="Scaffold Engineering Pro - 3D Structural Calculator" loading="lazy">
+                    </div>
+                    <div class="project-description">
+                        <h3>Scaffold Engineering Pro</h3>
+                        <p>Web-based 3D structural scaffolding calculator and Bill of Quantities (BOQ) generator designed to streamline material estimation, dimensional configuration, and structural visualization.</p>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-img">
                         <img src="images/scaffolding-doc.jpg" alt="Dokumentasi Kerja Scaffolding" loading="lazy">
                     </div>
                     <div class="project-description">
@@ -951,7 +974,6 @@
                     <a href="https://www.instagram.com/muhammadalfaiss?igsh=bGJyNXl6eDh1OTJl"><i class="fab fa-instagram"></i></a>
                 </div>
                 
-                <!-- EMAIL DI SINI - TEPAT DI BAWAH SOCIAL LINKS -->
                 <div class="contact-email">
                     Contact: 
                     <a href="mailto:muhammadjamilalfaizs@gmail.com">
@@ -959,7 +981,7 @@
                     </a>
                 </div>
                 
-                <p class="copyright">&copy; 2025 Muhammad Jamil Alfaizs. All rights reserved.</p>
+                <p class="copyright">&copy; 2026 Muhammad Jamil Alfaizs. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -986,7 +1008,7 @@
                     enable: true,
                     speed: 2,
                     direction: "none",
-                    random: true,
+                    random: false,
                     straight: false,
                     out_mode: "out",
                     bounce: false
@@ -999,125 +1021,65 @@
                     onclick: { enable: true, mode: "push" },
                     resize: true
                 }
-            }
+            },
+            retina_detect: true
         });
 
-        // Modal Functionality
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImage");
-        const span = document.getElementsByClassName("close")[0];
-
-        // Add click event to all images
-        document.querySelectorAll('.profile-img, .certificate-img img, .project-img img').forEach(img => {
-            img.style.cursor = 'pointer';
-            img.onclick = function(){
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                modalImg.alt = this.alt;
-            }
-        });
-
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // GSAP Animations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero animation
+        // Hero Animation
         gsap.to(".hero-content", {
-            duration: 1.5,
             opacity: 1,
             y: 0,
+            duration: 1.2,
             ease: "power3.out"
         });
 
-        // Section animations
-        gsap.utils.toArray("section").forEach(section => {
-            gsap.fromTo(section, 
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    }
+        // Scroll Reveal Sections
+        const sections = document.querySelectorAll("section");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
                 }
-            );
-        });
-
-        // Card hover animations
-        gsap.utils.toArray(".edu-exp-card, .skill-category, .certificate-item, .project-item").forEach(item => {
-            item.addEventListener("mouseenter", () => {
-                gsap.to(item, { scale: 1.02, duration: 0.3, ease: "power2.out" });
             });
-            item.addEventListener("mouseleave", () => {
-                gsap.to(item, { scale: 1, duration: 0.3, ease: "power2.out" });
-            });
-        });
+        }, { threshold: 0.1 });
 
-        // Mobile menu toggle
+        sections.forEach(section => observer.observe(section));
+
+        // Mobile Navigation Toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navLinks = document.querySelector('.nav-links');
 
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            const spans = menuToggle.querySelectorAll('span');
-            if (navLinks.classList.contains('active')) {
-                gsap.to(spans[0], { rotation: 45, y: 5, duration: 0.3 });
-                gsap.to(spans[1], { opacity: 0, duration: 0.3 });
-                gsap.to(spans[2], { rotation: -45, y: -5, duration: 0.3 });
-            } else {
-                gsap.to(spans[0], { rotation: 0, y: 0, duration: 0.3 });
-                gsap.to(spans[1], { opacity: 1, duration: 0.3 });
-                gsap.to(spans[2], { rotation: 0, y: 0, duration: 0.3 });
-            }
         });
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    gsap.to(window, {
-                        duration: 1,
-                        scrollTo: { y: targetElement, offsetY: 80 },
-                        ease: "power2.inOut"
-                    });
-                    
-                    // Close mobile menu
-                    navLinks.classList.remove('active');
-                    const spans = menuToggle.querySelectorAll('span');
-                    gsap.to(spans[0], { rotation: 0, y: 0, duration: 0.3 });
-                    gsap.to(spans[1], { opacity: 1, duration: 0.3 });
-                    gsap.to(spans[2], { rotation: 0, y: 0, duration: 0.3 });
-                }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
             });
         });
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                gsap.to(header, { backgroundColor: "rgba(10, 10, 10, 0.95)", duration: 0.3 });
-            } else {
-                gsap.to(header, { backgroundColor: "rgba(10, 10, 10, 0.8)", duration: 0.3 });
-            }
+        // Image Modal Popup
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.querySelector(".close");
+
+        document.querySelectorAll(".certificate-img img, .project-img img, .profile-img").forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            });
         });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
     </script>
 </body>
 </html>
